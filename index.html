@@ -20,24 +20,95 @@
 		<![endif]-->
 	</head>
 	<body>
+		<a href="#content" class="sr-only">Skip to main content</a>
 		<nav class="navbar navbar-default navbar-static-top" role="navigation">
 			<div class="container">
 				<a class="navbar-brand" href="#">DEPARTMENT of the PAYMENTS</a>
-				<img class="pull-right img-responsive" src="logo.png">
+				<img class="pull-right img-responsive" alt="Logo for Dept of Payments" src="logo.png">
 			</div>
 		</nav>
-		<div class="container">
-
+		<div class="container" id="content">
+			<div class="jumbotron page" id="page1">
+				<h1>Donate to the governement!</h1>
+				<h2>Why Donate?</h2>
+				<p>Because it's the right thing to do</p>
+			</div>
+			<div class="row">
+				<div class="col-md-6 text-center"><strong>Total Donations</strong></div>
+				<div class="col-md-6 text-center"><strong>Year-To-Date</strong></div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 text-center">$17,000,000</div>
+				<div class="col-md-6 text-center">$2,000,000</div>
+			</div>
+			<form class="form-horizontal hide page" role="form" id="page2">
+				  <div class="form-group">
+				    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+				    <div class="col-sm-10">
+				      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+				    <div class="col-sm-10">
+				      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <div class="col-sm-offset-2 col-sm-10">
+				      <div class="checkbox">
+				        <label>
+				          <input type="checkbox"> Remember me
+				        </label>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <div class="col-sm-offset-2 col-sm-10">
+				      <button type="submit" class="btn btn-default">Sign in</button>
+				    </div>
+				  </div>
+			</form>
 		</div>
 		<div class="container">
 			<ul class="pager">
-				<li class="previous hide"><a href="#">&larr; Previous</a></li>
-				<li class="next"><a href="#">Next &rarr;</a></li>
+				<li class="previous hide" id="previous"><a href="#">&larr; Previous</a></li>
+				<li class="next" id="next"><a href="#">Next &rarr;</a></li>
 			</ul>
 		</div>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://code.jquery.com/jquery.js"></script>
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+		<script>
+			var page = 1;
+
+			function next() {
+				console.log("page = " + page);
+				$("#previous").removeClass('hide');
+				$("#page" + page).addClass('hide');
+				page++;
+				$("#page" + page).removeClass('hide');
+				if (page == $(".page").length) {
+					$("#next").addClass('hide');
+				}
+			}
+
+			function previous() {
+				console.log("page = " + page);
+				$("#next").removeClass('hide');
+				$("#page" + page).addClass('hide');
+				page--;
+				$("#page" + page).removeClass('hide');
+				if (page == 1) {
+					$("#previous").addClass('hide');
+				}
+			}
+			$().ready(function (){
+				$("#next").click(next);
+				$("#previous").click(previous);
+				$("#start").click(previous);
+			});
+		</script>
 	</body>
 </html>
