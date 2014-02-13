@@ -21,93 +21,156 @@
 	</head>
 	<body>
 		<a href="#content" class="sr-only">Skip to main content</a>
+		<!--
 		<nav class="navbar navbar-default navbar-static-top" role="navigation">
 			<div class="container">
 				<a class="navbar-brand" href="#">DEPARTMENT of the PAYMENTS</a>
 				<img class="pull-right img-responsive" alt="Logo for Dept of Payments" src="logo.png">
 			</div>
 		</nav>
-		<div class="container" id="content">
-			<div class="jumbotron page" id="page1">
-				<h1>Donate to the governement!</h1>
-				<h2>Why Donate?</h2>
-				<p>Because it's the right thing to do</p>
+		-->
+		<div class="container-fluid" id="content">
+
+			<!-- first page -->
+			<div class="container-fluid page">
+				<div class="row">
+					<img class="img-responsive" alt="Logo for Dept of Payments" src="logo.png">
+				</div>
+				<p class="h1 text-warning">Welcome.</p>
+				<p class="h3">Thank you for your interest in making donations to help reduce the public debt.</p>
+				<p class="h4">$21,430,240,502.00<br /><small>Debt as of 2/3/2014</small></p>
+				<button type="button" class="btn btn-primary btn-block nextpage">Contribute</button>
+				<p class=text-muted>
+Your contribution is accepted under the provisions of 31 U.S.C. 3113 which authorizes the Secretary of the Treasury to accept conditional gifts to the United States for the purpose of reducing the public debt.  These donations are voluntary, and no goods, services, or other considerations are provided to the donors.
+				</p>
 			</div>
-			<div class="row">
-				<div class="col-md-6 text-center"><strong>Total Donations</strong></div>
-				<div class="col-md-6 text-center"><strong>Year-To-Date</strong></div>
+
+			<!-- second page -->
+			<div class="container-fluid page hide">
+				<form role="form">
+					<div class="form-group">
+						<label for="donation" class="control-label">Donation Amount</label>
+						<div class="input-group">
+							<span class="input-group-addon">$</span>
+							<input type="number" class="form-control" placeholder="Donation Amount" required>
+							<span class="input-group-addon">.00</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="name" class="control-label">Name</label>
+						<div>
+							<input type="text" class="form-control" id="name" placeholder="Name" required>
+						</div>
+					</div>
+					<label for="address">Address</label>
+					<div id="address">
+						<div class="form-group">
+							<div>
+								<label for="streetaddress" class="sr-only">Street Address</label>
+								<input type="text" class="form-control" id="streetaddress" placeholder="Street Address" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<div>
+								<label for="city" class="sr-only">City</label>
+								<input type="text" class="form-control" id="city" placeholder="City" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-xs-5">
+								<label for="state" class="sr-only">State</label>
+								<input type="text" class="form-control" id="state" placeholder="State" required>
+							</div>
+							<div class="col-xs-7">
+								<label for="zipcode" class="sr-only">Zipcode</label>
+								<input type="text" class="form-control" id="zipcode" placeholder="Zipcode" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-xs-6">
+								<button type="button" class="btn btn-primary btn-block nextpage">Credit Card</button>
+							</div>
+							<div class="col-xs-6">
+								<button type="button" class="btn btn-primary btn-block nextpage">Checking</button>
+							</div>
+						</div>
+						<button type="button" class="btn btn-primary btn-block previouspage">Cancel</button>
+					</div>
+				</form>
 			</div>
-			<div class="row">
-				<div class="col-md-6 text-center">$17,000,000</div>
-				<div class="col-md-6 text-center">$2,000,000</div>
+
+			<!-- third page - credit card -->
+			<div class="container-fluid page hide">
+				<form role="form">
+					<div class="form-group">
+						<label for="cardNumber">CARD NUMBER</label>
+						<div class="input-group">
+							<input type="number" class="form-control" id="cardNumber" placeholder="Valid Card Number" required />
+							<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-6">
+							<label for="expiration">EXPIRY DATE</label>
+							<div class="row">
+								<div class="form-group" id="expiration">
+									<div class="col-xs-6">
+										<input type="number" class="form-control" id="expityMonth" placeholder="MM" required />
+									</div>
+									<div class="col-xs-6">
+										<input type="number" class="form-control" id="expityYear" placeholder="YY" required />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-6">
+							<div class="form-group">
+								<label for="cvCode">CV CODE</label>
+								<input type="password" class="form-control" id="cvCode" placeholder="CV" required />
+							</div>
+						</div>
+					</div>
+					<button class="btn btn-primary btn-block nextpage">Next</a>
+				</form>
 			</div>
-			<form class="form-horizontal hide page" role="form" id="page2">
-				  <div class="form-group">
-				    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-				    <div class="col-sm-10">
-				      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-				    </div>
-				  </div>
-				  <div class="form-group">
-				    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-				    <div class="col-sm-10">
-				      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-				    </div>
-				  </div>
-				  <div class="form-group">
-				    <div class="col-sm-offset-2 col-sm-10">
-				      <div class="checkbox">
-				        <label>
-				          <input type="checkbox"> Remember me
-				        </label>
-				      </div>
-				    </div>
-				  </div>
-				  <div class="form-group">
-				    <div class="col-sm-offset-2 col-sm-10">
-				      <button type="submit" class="btn btn-default">Sign in</button>
-				    </div>
-				  </div>
-			</form>
-		</div>
-		<div class="container">
-			<ul class="pager">
-				<li class="previous hide" id="previous"><a href="#">&larr; Previous</a></li>
-				<li class="next" id="next"><a href="#">Next &rarr;</a></li>
-			</ul>
+
+			<!-- fourth page - checking -->
+			<div class="container-fluid page hide">
+			</div>
+
+			<!-- fifth page - payment confirmation -->
+			<div class="container-fluid page hide">
+			</div>
+
+			<!-- sixth page - payment confirmed -->
+			<div class="container-fluid page hide">
+			</div>
+
 		</div>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://code.jquery.com/jquery.js"></script>
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 		<script>
-			var page = 1;
-
-			function next() {
-				console.log("page = " + page);
-				$("#previous").removeClass('hide');
-				$("#page" + page).addClass('hide');
-				page++;
-				$("#page" + page).removeClass('hide');
-				if (page == $(".page").length) {
-					$("#next").addClass('hide');
-				}
+			function next(current) {
+				console.log("called next with " + current);
+				current.addClass('hide');
+				current.next(".page").removeClass('hide');
 			}
 
-			function previous() {
-				console.log("page = " + page);
-				$("#next").removeClass('hide');
-				$("#page" + page).addClass('hide');
-				page--;
-				$("#page" + page).removeClass('hide');
-				if (page == 1) {
-					$("#previous").addClass('hide');
-				}
+			function previous(current) {
+				console.log("called previous with " + current);
+				current.addClass('hide');
+				current.prev(".page").removeClass('hide');
 			}
+
 			$().ready(function (){
-				$("#next").click(next);
-				$("#previous").click(previous);
-				$("#start").click(previous);
+				$(".nextpage").click(function () {
+					next($(this).closest(".page"))
+				});
+				$(".previouspage").click(function () {
+					previous($(this).closest(".page"))
+				});
 			});
 		</script>
 	</body>
