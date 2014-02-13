@@ -21,6 +21,18 @@
 	</head>
 	<body>
 		<a href="#content" class="sr-only">Skip to main content</a>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+		</script>
+		<script>
+			!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+		</script>
 		<!--
 		<nav class="navbar navbar-default navbar-static-top" role="navigation">
 			<div class="container">
@@ -36,7 +48,7 @@
 				<div class="row">
 					<img class="img-responsive" alt="Logo for Dept of Payments" src="logo.png">
 				</div>
-				<p class="h1 text-warning">Welcome.</p>
+				<p class="h1 text-warning">Welcome</p>
 				<p class="h3">Thank you for your interest in making donations to help reduce the public debt.</p>
 				<p class="h4">$21,430,240,502.00<br /><small>Debt as of 2/3/2014</small></p>
 				<button type="button" class="btn btn-primary btn-block nextpage">Contribute</button>
@@ -52,7 +64,7 @@ Your contribution is accepted under the provisions of 31 U.S.C. 3113 which autho
 						<label for="donation" class="control-label">Donation Amount</label>
 						<div class="input-group">
 							<span class="input-group-addon">$</span>
-							<input type="number" class="form-control" placeholder="Donation Amount" required>
+							<input type="number" class="form-control" id="donation" placeholder="Donation Amount" required>
 							<span class="input-group-addon">.00</span>
 						</div>
 					</div>
@@ -88,62 +100,117 @@ Your contribution is accepted under the provisions of 31 U.S.C. 3113 which autho
 						</div>
 						<div class="form-group row">
 							<div class="col-xs-6">
-								<button type="button" class="btn btn-primary btn-block nextpage">Credit Card</button>
+								<button type="button" class="btn btn-primary btn-block nextpage" id="creditButton">Credit Card</button>
 							</div>
 							<div class="col-xs-6">
-								<button type="button" class="btn btn-primary btn-block nextpage">Checking</button>
+								<button type="button" class="btn btn-primary btn-block nextpage" id="checkButton">Checking</button>
 							</div>
 						</div>
-						<button type="button" class="btn btn-primary btn-block previouspage">Cancel</button>
+						<button type="button" class="btn btn-default btn-block previouspage">Cancel</button>
 					</div>
 				</form>
 			</div>
 
-			<!-- third page - credit card -->
+			<!-- third page - credit card / check -->
 			<div class="container-fluid page hide">
 				<form role="form">
-					<div class="form-group">
-						<label for="cardNumber">CARD NUMBER</label>
-						<div class="input-group">
-							<input type="number" class="form-control" id="cardNumber" placeholder="Valid Card Number" required />
-							<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+					<div id="creditPage">
+						<div class="form-group">
+							<label for="cardNumber">Credit Card</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-credit-card"></span></span>
+								<input type="number" class="form-control" id="cardNumber" placeholder="Credit Card Number" required />
+								<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-6">
-							<label for="expiration">EXPIRY DATE</label>
-							<div class="row">
-								<div class="form-group" id="expiration">
-									<div class="col-xs-6">
-										<input type="number" class="form-control" id="expityMonth" placeholder="MM" required />
-									</div>
-									<div class="col-xs-6">
-										<input type="number" class="form-control" id="expityYear" placeholder="YY" required />
-									</div>
+						<div class="row">
+							<div class="col-xs-7">
+								<label for="expiration">Expiration</label>
+								<input type="month" class="form-control" id="expiration" placeholder="Expiration" required />
+							</div>
+							<div class="col-xs-5">
+								<div class="form-group">
+									<label for="cvCode">CVC</label>
+									<input type="number" class="form-control" id="cvCode" placeholder="CVC" required />
 								</div>
 							</div>
 						</div>
-						<div class="col-xs-6">
-							<div class="form-group">
-								<label for="cvCode">CV CODE</label>
-								<input type="password" class="form-control" id="cvCode" placeholder="CV" required />
+					</div>
+					<div id="checkPage">
+						<div class="form-group">
+							<label for="cardNumber">Checking Account Number</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-transfer"></span></span>
+								<input type="number" class="form-control" id="accountNumber" placeholder="Account Number" required />
+								<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
 							</div>
 						</div>
+						<div class="form-group">
+							<label for="routingNumber">Checking Routing Number</label>
+							<input type="number" class="form-control" id="accountNumber" placeholder="Routing Number" required />
+						</div>
 					</div>
-					<button class="btn btn-primary btn-block nextpage">Next</a>
+					<div class="form-group row">
+						<div class="col-xs-8">
+							<button type="button" class="btn btn-primary btn-block nextpage">Next</button>
+						</div>
+						<div class="col-xs-4">
+							<button type="button" class="btn btn-default btn-block previouspage">Cancel</button>
+						</div>
+					</div>
 				</form>
 			</div>
 
-			<!-- fourth page - checking -->
-			<div class="container-fluid page hide">
+			<!-- fourth page - payment confirmation -->
+			<div class="container-fluid page hide" id="confirmationPage">
+				<form role="form">
+					<div class="form-group">
+						<label for="donationDisabled" class="control-label">Donation Amount</label>
+						<div class="input-group">
+							<span class="input-group-addon">$</span>
+							<input type="number" class="form-control" id="donationDisabled" disabled>
+							<span class="input-group-addon">.00</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="nameDisabled" class="control-label">Name</label>
+						<input type="text" class="form-control" id="nameDisabled" disabled>
+					</div>
+					<div class="form-group">
+						<label for="paymentType">Payment Type</label>
+						<input type="text" class="form-control" id="paymentType" disabled>
+					</div>
+					<div class="form-group row">
+						<div class="col-xs-8">
+							<button type="button" class="btn btn-success btn-block nextpage">Submit Donation</button>
+						</div>
+						<div class="col-xs-4">
+							<button type="button" class="btn btn-default btn-block previouspage">Cancel</button>
+						</div>
+					</div>
+				</form>
 			</div>
 
-			<!-- fifth page - payment confirmation -->
+			<!-- fifth page - payment confirmed -->
 			<div class="container-fluid page hide">
-			</div>
-
-			<!-- sixth page - payment confirmed -->
-			<div class="container-fluid page hide">
+				<div class="row">
+					<h1><span class="label label-success"><span class="glyphicon glyphicon-ok"></span></span> Thank you!</h1>
+					<h2>Your donation has helped reduce the public debt.</h2>
+					<h1>Spread the News:</h1>
+					<p>I just helped to pay down the public debt. Click here to join me: <a href="/">http://mzimmerman.github.io/paymobile</a></p>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<div class="fb-share-button" data-href="http://mzimmerman.github.io/paymobile" data-width="400" data-type="button_count"></div>
+					</div>
+					<div class="col-xs-4">
+						<a href="http://mzimmerman.github.io/paymobile" class="twitter-share-button" data-lang="en">Tweet</a>
+					</div>
+					<div class="col-xs-4">
+						<div class="g-plus" data-action="share" data-annotation="bubble" href="http://mzimmerman.github.io/paymobile"></div>
+					</div>
+				</div>
+				<a href="#" class="btn btn-default">Home</a>
 			</div>
 
 		</div>
@@ -151,20 +218,44 @@ Your contribution is accepted under the provisions of 31 U.S.C. 3113 which autho
 		<script src="https://code.jquery.com/jquery.js"></script>
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-		<script>
+		<script type="text/javascript">
+			(function() {
+				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+				po.src = 'https://apis.google.com/js/plusone.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+			})();
+
+			(function() {
+				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+				po.src = 'https://apis.google.com/js/platform.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+			})();
+
 			function next(current) {
-				console.log("called next with " + current);
 				current.addClass('hide');
-				current.next(".page").removeClass('hide');
+				var nextPage = current.next(".page").removeClass('hide');
+				if (nextPage.attr("id") == "confirmationPage") {
+					$("#donationDisabled").val($("#donation").val());
+					$("#nameDisabled").val($("#name").val());
+				}
 			}
 
 			function previous(current) {
-				console.log("called previous with " + current);
 				current.addClass('hide');
 				current.prev(".page").removeClass('hide');
 			}
 
 			$().ready(function (){
+				$("#creditButton").click(function () {
+					$("#checkPage").hide();
+					$("#creditPage").show();
+					$("#paymentType").val("Credit");
+				});
+				$("#checkButton").click(function () {
+					$("#creditPage").hide();
+					$("#checkPage").show();
+					$("#paymentType").val("Checking Account");
+				});
 				$(".nextpage").click(function () {
 					next($(this).closest(".page"))
 				});
